@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Subir Pelicula</title>
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../Imagenes/Logo/UAO-icono.svg" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="agregarPeli.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+	<link href="css/footer.css" rel="stylesheet" type="text/css">
+	<script src="js/movie submit.js" type="text/javascript"></script>
+</head>
+
+<body>	
+<div class="wrapper">
+    <div class="title">
+        <h3><span class="text"><img src="../../Imagenes/Logo/UAO.svg" alt="logo"> </span><br> Formulario de Envío</h3>
+        <hr>
+    </div>
+    <div class="form">
+             <div class="form_control">
+                <label>Nombre de la Película</label>
+                <input type="text" name="mname" id="mname" class="input_field" placeholder="Ingrese el nombre...">
+            </div>
+            <div class="form_control">
+                <label>Año de Estreno</label>
+                <input type="text" name="year" id="year" class="input_field" placeholder="Ingrese el año...">
+            </div>
+            <div class="form_control">
+                <label>Género</label>
+                <select id="genre" name="genre" class="input_field">
+                        <option value="">Seleccione el Género</option>
+                        <option value="action">Acción</option>
+                        <option value="comedy">Comedia</option>
+                        <option value="fantasy">Fantasía</option>
+                        <option value="horror">Terror</option>
+						<option value="romance">Romance</option>
+						<option value="other">Otro</option>
+                </select>
+            </div>
+            <div class="form_control">
+                <label>Descripción</label>
+				<textarea name="description" id="description" class="input_field" placeholder="Ingrese una descripción detallada..."></textarea>
+            </div>
+            <div class="form_control">
+                <label>Poster</label>
+                <div class="file-container">
+                  <button type="button" id="fileBtn">Seleccionar Poster</button>
+                  <span class="file-name" id="fileName">Ningún archivo seleccionado</span>
+                  <input type="file" name="poster" id="poster" accept="image/png, image/jpeg, image/jpg">
+                </div>
+                <p class="warn">*solo subir archivos '.png', '.jpg' y '.jpeg'</p>
+            </div>
+			<div class="form_control">
+                <label>Tu Email</label>
+                <input type="text" name="email" id="email" class="input_field" placeholder="Ingrese el email...">
+            </div>
+            <div class="form_control terms">
+                <label class="check">
+                    <input type="checkbox" name="agree" id="agree">
+                    <span class="check"></span>
+                </label>
+                <p class="agree">Acepto los términos y condiciones</p>
+            </div>
+            <div class="form_control">
+                <input type="submit" class="btn-custom" value="Enviar">
+            </div>
+        </form>
+    </div></div>
+</div>
+
+<script>
+  const fileBtn = document.getElementById('fileBtn');
+  const fileInput = document.getElementById('poster');
+  const fileName = document.getElementById('fileName');
+
+  fileBtn.addEventListener('click', () => fileInput.click());
+
+  fileInput.addEventListener('change', () => {
+    fileName.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : 'Ningún archivo seleccionado';
+  });
+</script>
+
+</body>
+</html>

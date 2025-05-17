@@ -1,0 +1,688 @@
+* {
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  position: sticky;
+  top: 0;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  height: 100%;
+  color: white;
+  font-family: "Sen", sans-serif;
+}
+
+.logo-container {
+  flex: 1;
+}
+
+.logo {
+    width: 90px;  /* Ajusta el tamaño de la imagen */
+    height: auto;  /* Mantiene la proporción original de la imagen */
+}
+
+.menu-container {
+  flex: 6;
+}
+
+.menu-list {
+  display: flex;
+  list-style: none;
+}
+
+.menu-list-item {
+  margin-right: 30px;
+}
+
+.menu-list-item.active {
+  font-weight: bold;
+}
+
+/* Efecto cuando el ratón pasa sobre el botón */
+.menu-list-item:hover {
+    color: rgb(165, 7, 7); /* Color de fondo al pasar el ratón */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+/* Estilo para el botón activo */
+.menu-list-item.active {
+    color: rgb(165, 7, 7); /* Resalta el botón activo */
+    color: white; /* Mantén el color del texto en blanco */
+    font-weight: bold; /* Aumenta el grosor del texto para el activo */
+    transform: scale(1.05); /* Aumenta el tamaño del botón activo */
+}
+.profile-container {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.profile-text-container {
+  margin: 0 20px;
+}
+
+.profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.toggle {
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.toggle-icon {
+  color: goldenrod;
+}
+
+.toggle-ball {
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  position: absolute;
+  right: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1s ease all;
+}
+
+.sidebar {
+  width: 50px;
+  height: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+
+.left-menu-icon {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.left-menu-icon:hover {
+    color: rgb(165, 7, 7); /* Color rojo cuando el ratón pasa sobre el ícono */
+    transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+}
+
+/* Estilo para los íconos activos */
+.left-menu-icon.active {
+    color: rgb(165, 7, 7); /* Color rojo cuando el ícono es activo */
+    color: white; /* Asegura que el color del ícono sea blanco */
+    transform: scale(1.1); /* Aumenta el tamaño del ícono activo */
+}
+
+.container {
+  background-color: #151515;
+  min-height: calc(100vh - 50px);
+  color: white;
+}
+
+.content-container {
+  margin-left: 50px;
+}
+
+.featured-content {
+  height: 50vh;
+  padding: 50px;
+}
+
+.featured-title {
+  width: 200px;
+}
+
+.featured-desc {
+  width: 500px;
+  color: lightgray;
+  margin: 30px 0;
+}
+
+
+.movie-list-container {
+  padding: 15px 20px;
+}
+
+.movie-list-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-list {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
+
+.movie-list-item {
+  margin-right: 30px;
+  position: relative;
+}
+
+.movie-list-item:hover .movie-list-item-img {
+  transform: scale(1.2);
+  margin: 0 30px;
+  opacity: 0.5;
+}
+
+.movie-list-item:hover .movie-list-item-title,
+.movie-list-item:hover .movie-list-item-desc,
+.movie-list-item:hover .movie-list-item-button {
+  opacity: 1;
+}
+
+.movie-list-item-img {
+  transition: all 1s ease-in-out;
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.movie-list-item-title {
+  background-color: #333;
+  padding: 0 10px;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-list-item-desc {
+  background-color: #333;
+  padding: 10px;
+  font-size: 14px;
+  position: absolute;
+  top: 30%;
+  left: 50px;
+  width: 230px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-list-item-button {
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.arrow {
+  font-size: 120px;
+  position: absolute;
+  top: 90px;
+  right: 0;
+  color: lightgray;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.container.active {
+  background-color: white;
+}
+
+.movie-list-title.active {
+  color: black;
+}
+
+.navbar-container.active {
+  background-color: white;
+
+  color: black;
+}
+
+.sidebar.active{
+    background-color: white;
+}
+
+.left-menu-icon.active{
+    color: black;
+}
+
+.toggle.active{
+    background-color: black;
+}
+
+.toggle-ball.active{
+    background-color: white;
+    transform: translateX(-20px);
+}
+/* Estilos para el carrusel */
+
+.featured-carousel {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slide-item {
+  padding-top: 40%;
+  position: relative;
+  overflow: hidden;
+  display: none; /* Ocultamos todos los slides por defecto */
+}
+
+.hero-slide-item.active {
+  display: block; /* Solo el activo se muestra */
+}
+
+.hero-slide-item img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  height: 100%;
+}
+
+.hero-slide-item-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+}
+
+.item-content-wraper {
+  padding-left: 5rem;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.item-content-wraper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+.item-content-title {
+  font-size: 3rem;
+  line-height: 3rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.item-content-description {
+  font-size: 1.15rem;
+  margin-top: 1rem;
+  line-height: 1.5rem;
+}
+
+.item-action {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--main-color, #ff3c3c);
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.top-down {
+  transform: translateY(-50px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.hero-slide-item.active .top-down {
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+}
+
+.btn {
+    position: relative; /* clave para controlar el stacking */
+    color: #ffffff;
+    padding: 0.25rem 1.5rem;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.btn-hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--main-color, #ff3c3c);
+    transition: 0.3s ease-in-out;
+    z-index: -1; /* ESTE valor lo pone debajo del texto */
+}
+
+.btn-hover:hover::before {
+    width: 100%;
+}
+
+.btn i,
+.btn span {
+    position: relative; /* para estar encima del ::before */
+    z-index: 1;
+}
+
+
+/* Contenedor general */
+.container-fluid {
+  padding: 0 40px;
+}
+
+.iq-main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.main-title {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.iq-view-all {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.favorites-slider {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: hidden; /* evita scroll */
+  gap: 16px;
+  scroll-behavior: smooth;
+}
+
+.slide-item {
+  flex: 0 0 23%; /* 4 items visibles */
+  min-width: 200px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+
+/* Imagen contenedora */
+.block-images {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Gradiente oscuro encima de la imagen */
+.block-images::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85));
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Línea roja al lado izquierdo en hover */
+.block-images::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #e50914;
+  z-index: 2;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: top;
+  border-radius: 2px;
+}
+
+/* Imagen */
+.block-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+  position: relative;
+  z-index: 0;
+}
+
+/* Hover efecto */
+li.slide-item:hover .block-images {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+}
+
+li.slide-item:hover .block-images::before {
+  opacity: 1;
+}
+
+li.slide-item:hover .block-images::after {
+  transform: scaleY(1);
+}
+
+
+
+/* Hover efecto: zoom + sombra */
+.slide-item:hover .block-images {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+/* Descripción */
+.block-description {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  z-index: 2;
+}
+
+.block-description .iq-title a {
+  font-weight: bold;
+  font-size: 1em;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Tiempo + edad */
+.movie-time {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 0.85em;
+  color: #fff;
+  gap: 8px;
+}
+
+.badge-secondary {
+  background-color: #6c757d;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.75em;
+  color: #fff;
+}
+
+/* Botón "Ver ahora" */
+.hover-buttons {
+  margin-top: 6px;
+}
+
+.btn-hover {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-hover:hover {
+  background: #bf000a;
+}
+
+/* Iconos sociales ocultos */
+.block-social-info {
+  display: none;
+}
+
+
+.slide-item:hover .block-social-info {
+  opacity: 1;
+}
+
+.music-play-lists {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.music-play-lists li {
+  position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-play-lists li i {
+  color: white;
+  font-size: 14px;
+}
+
+.music-play-lists span {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #e50914;
+  color: #fff;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorites-slider {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: hidden; /* evita scroll */
+  gap: 16px;
+  scroll-behavior: smooth;
+    overflow-y: hidden !important;
+}
+
+.slide-item {
+  flex: 0 0 23%; /* 4 items visibles */
+  min-width: 200px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.favorite-contens {
+  position: relative;
+}
+
+.carousel-buttons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.carousel-btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50%;
+  pointer-events: all;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #e50914;
+}

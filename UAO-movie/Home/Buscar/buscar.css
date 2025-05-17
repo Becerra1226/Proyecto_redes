@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  position: sticky;
+  top: 0;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  height: 100%;
+  color: white;
+  font-family: "Sen", sans-serif;
+}
+
+.logo-container {
+  flex: 1;
+}
+
+.logo {
+    width: 90px;  /* Ajusta el tamaño de la imagen */
+    height: auto;  /* Mantiene la proporción original de la imagen */
+}
+
+.menu-container {
+  flex: 6;
+}
+
+.menu-list {
+  display: flex;
+  list-style: none;
+}
+
+.menu-list-item {
+  margin-right: 30px;
+}
+
+.menu-list-item.active {
+  font-weight: bold;
+}
+
+/* Efecto cuando el ratón pasa sobre el botón */
+.menu-list-item:hover {
+    color: rgb(165, 7, 7); /* Color de fondo al pasar el ratón */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+/* Estilo para el botón activo */
+.menu-list-item.active {
+    color: rgb(165, 7, 7); /* Resalta el botón activo */
+    color: white; /* Mantén el color del texto en blanco */
+    font-weight: bold; /* Aumenta el grosor del texto para el activo */
+    transform: scale(1.05); /* Aumenta el tamaño del botón activo */
+}
+.profile-container {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.profile-text-container {
+  margin: 0 20px;
+}
+
+.profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.toggle {
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.toggle-icon {
+  color: goldenrod;
+}
+
+.toggle-ball {
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  position: absolute;
+  right: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1s ease all;
+}
+
+.sidebar {
+  width: 50px;
+  height: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+
+.left-menu-icon {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.left-menu-icon:hover {
+    color: rgb(165, 7, 7); /* Color rojo cuando el ratón pasa sobre el ícono */
+    transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+}
+
+.container {
+  background-color: #151515;
+  min-height: calc(100vh - 50px);
+  color: white;
+}
+
+.content-container {
+  margin-left: 50px;
+}
+
+/* Estilo para los íconos activos */
+.left-menu-icon.active {
+    color: rgb(165, 7, 7); /* Color rojo cuando el ícono es activo */
+    color: white; /* Asegura que el color del ícono sea blanco */
+    transform: scale(1.1); /* Aumenta el tamaño del ícono activo */
+}
+
+/* Buscar*/
+.search-container{
+  	display: flex;
+    align-items: center;
+  	justify-content: center;
+  	background-color: #2d2d2d;
+  	border-radius: 20px;
+  	padding: 0px 10px;
+  	max-width: 600px;
+  	margin: 0px auto;
+  	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	margin-top: 0px;
+    position: relative;
+    top: 20px;
+}
+.search-container i{
+	color: white;
+	margin-left: 3px;
+	font-size: 15px;
+}
+.search-container input[type="text"]{
+  	flex-grow: 1;
+  	border: none;
+  	outline: none;
+  	background: transparent;
+  	color: white;
+  	padding: 10px;
+  	font-size: 16px;
+}
+.search-container input::placeholder{
+	color: #a0a0a0;
+}
+.search-container input:focus{
+	outline: none;
+}
+
+
+
+h2 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  padding-left: 100px; /* mejor que left para mantener el flujo */
+  padding-top: 30px;   /* espacio arriba sin romper flujo */
+  position: relative;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-left: 100px; /* igual que h2 para alinearlos */
+  padding-top: 30px;
+  max-width: calc(100% - 100px); /* para que no se desborde del viewport */
+  box-sizing: border-box;
+}
+
+
+  .category-btn {
+    padding: 8px 16px;
+    background-color: #212538;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    user-select: none;
+  }
+
+  .category-btn:hover {
+    background-color: #ff3c3c;
+  }
+
+  .category-btn.active {
+    background-color: #555a71;
+  }

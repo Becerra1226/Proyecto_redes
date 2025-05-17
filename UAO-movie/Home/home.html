@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="../Imagenes/Logo/UAO-icono.svg" type="image/x-icon" />
+    <link href="home.css" rel="stylesheet" type="text/css" />
+    <title>Home</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <img src="../Imagenes/Logo/UAO.svg" alt="Logo" class="logo" />
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item">Películas</li>
+                    <li class="menu-list-item">Series</li>
+                    <li class="menu-list-item">Populares</li>
+                    <li class="menu-list-item">Tendencias</li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="../Imagenes/Perfil/Perfil_1.svg" alt="Perfil" />
+                <div class="profile-text-container">
+                    <span class="profile-text">Perfil</span>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div class="toggle">
+                    <i class="fas fa-moon toggle-icon"></i>
+                    <i class="fas fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <a href="./Buscar/buscar.html">
+            <i class="left-menu-icon fas fa-search"></i>
+        </a>
+        <a href="home.html">
+            <i class="left-menu-icon fas fa-home"></i>
+        </a>
+        <a href="./Peliculas/Peliculas.html">
+            <i class="left-menu-icon fas fa-tv"></i>
+        </a>
+        <a href="./Creditos/creditos.html">
+            <i class="left-menu-icon fas fa-shopping-cart"></i>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="content-container">
+            <div class="featured-carousel">
+                <div class="hero-slide-item active">
+                    <img src="../Imagenes/Banner/Banner_1.png" alt="Película 1" />
+                    <div class="hero-slide-item-content">
+                        <div class="item-content-wraper top-down delay-2">
+                            <h1 class="item-content-title">Free Guy</h1>
+                            <p class="item-content-description">
+                                Un cajero de banco descubre que, en realidad, es un personaje secundario de un videojuego de mundo abierto y decide convertirse en el héroe de su propia historia.
+                            </p>
+                            <button class="btn btn-hover item-action">VER</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-slide-item">
+                    <img src="../Imagenes/Banner/Banner_2.png" alt="Película 2" />
+                    <div class="hero-slide-item-content">
+                        <div class="item-content-wraper top-down delay-2">
+                            <h1 class="item-content-title">Gato con botas el último deseo</h1>
+                            <p class="item-content-description">
+                                El Gato con Botas descubre que su pasión por la aventura le ha costado ocho de sus nueve vidas. Así que debe partir en busca de la mítica Estrella de los Deseos para restaurar sus vidas perdidas.
+                            </p>
+                            
+                            <button class="btn btn-hover item-action">VER</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-slide-item">
+                    <img src="../Imagenes/Banner/Banner_3.png" alt="Película 3" />
+                    <div class="hero-slide-item-content">
+                        <div class="item-content-wraper top-down delay-2">
+                            <h1 class="item-content-title">BAD BOYS 4</h1>
+                            <p class="item-content-description">
+                                Los veteranos agentes Mike Lowery y Marcus Burnett vuelven a colaborar para detener a Armando Armas, el violento líder de un cartel de la droga afincado en Miami. En esta ocasión, los apoya el equipo AMMO, un grupo de élite del Departamento de Policía de Miami.
+                            </p>
+                            <button class="btn btn-hover item-action">VER</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<section id="iq-favorites">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 overflow-hidden">
+        <div class="iq-main-header d-flex align-items-center justify-content-between">
+          <h4 class="main-title">Recomendaciones para ti</h4>
+          <a href="#" id="viewAllMovie" class="iq-view-all">Ver todo</a>
+        </div>
+
+        <div class="favorite-contens">
+          <div class="carousel-wrapper">
+            <ul class="favorites-slider list-inline p-0 mb-0">
+              <!-- slide item 1 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Fantasia/Dragon Ball Super Broly (2020).jpg" class="img-fluid" alt="Dragon Ball Super Broly" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">Dragon Ball Super Broly</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">13+</div>
+                      <span class="text-white">1h 43min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- slide item 2 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Accion/John Wick (2014).jpg" class="img-fluid" alt="John Wick" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">John Wick</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">16+</div>
+                      <span class="text-white">2h 34min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- slide item 3 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Comedia/Un príncipe en Nueva York 2 (2021).jpg" class="img-fluid" alt="Un príncipe en Nueva York 2" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">Un príncipe en Nueva York 2</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">13+</div>
+                      <span class="text-white">2h 57min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- slide item 4 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Anime/Dragon Ball Super Super Hero (2022).jpg" class="img-fluid" alt="Dragon Ball Super Hero" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">Dragon Ball Super Hero</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">10+</div>
+                      <span class="text-white">2h 23min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- slide item 5 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Infantil/Robot salvaje (2024).jpg" class="img-fluid" alt="Robot Salvaje" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">Robot Salvaje</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">7+</div>
+                      <span class="text-white">1h 55min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Botones del carrusel -->
+            <div class="carousel-buttons">
+              <button class="carousel-btn prev-btn">&#10094;</button>
+              <button class="carousel-btn next-btn">&#10095;</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="iq-favorites">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 overflow-hidden">
+        <div class="iq-main-header d-flex align-items-center justify-content-between">
+          <h4 class="main-title">Recomendaciones para ti</h4>
+          <a href="#" id="viewAllMovie" class="iq-view-all">Ver todo</a>
+        </div>
+
+        <div class="favorite-contens">
+          <div class="carousel-wrapper">
+            <ul class="favorites-slider list-inline p-0 mb-0">
+              <!-- slide item 1 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Fantasia/Dragon Ball Super Broly (2020).jpg" class="img-fluid" alt="Dragon Ball Super Broly" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">Dragon Ball Super Broly</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">13+</div>
+                      <span class="text-white">1h 43min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- slide item 2 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Accion/John Wick (2014).jpg" class="img-fluid" alt="John Wick" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">John Wick</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">16+</div>
+                      <span class="text-white">2h 34min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- slide item 3 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Comedia/Un príncipe en Nueva York 2 (2021).jpg" class="img-fluid" alt="Un príncipe en Nueva York 2" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">Un príncipe en Nueva York 2</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">13+</div>
+                      <span class="text-white">2h 57min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- slide item 4 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Anime/Dragon Ball Super Super Hero (2022).jpg" class="img-fluid" alt="Dragon Ball Super Hero" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">Dragon Ball Super Hero</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">10+</div>
+                      <span class="text-white">2h 23min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- slide item 5 -->
+              <li class="slide-item">
+                <div class="block-images position-relative">
+                  <div class="img-box">
+                    <img src="../Imagenes/Peliculas/Infantil/Robot salvaje (2024).jpg" class="img-fluid" alt="Robot Salvaje" />
+                  </div>
+                  <div class="block-description">
+                    <h6 class="iq-title"><a href="#">Robot Salvaje</a></h6>
+                    <div class="movie-time d-flex align-items-center my-2">
+                      <div class="badge badge-secondary p-1 mr-2">7+</div>
+                      <span class="text-white">1h 55min</span>
+                    </div>
+                    <div class="hover-buttons">
+                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Botones del carrusel -->
+            <div class="carousel-buttons">
+              <button class="carousel-btn prev-btn">&#10094;</button>
+              <button class="carousel-btn next-btn">&#10095;</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script src="../scripts/home/carrusel.js"></script>
+
+<script>
+  const slider = document.querySelector('.favorites-slider');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+
+  // Capturamos todos los items inicialmente
+  let items = Array.from(slider.children);
+
+  // Función para mostrar solo 4 items rotados
+  function render() {
+    // Limpiar el slider
+    slider.innerHTML = '';
+
+    // Mostrar solo 4 primeros items
+    const visibleItems = items.slice(0, 4);
+
+    // Añadir los 4 visibles al DOM
+    visibleItems.forEach(item => slider.appendChild(item));
+  }
+
+  // Inicializamos el render
+  render();
+
+  // Al hacer click en siguiente (rotar a la izquierda)
+  nextBtn.addEventListener('click', () => {
+    // Sacamos el primer item y lo movemos al final
+    const first = items.shift();
+    items.push(first);
+    render();
+  });
+
+  // Al hacer click en anterior (rotar a la derecha)
+  prevBtn.addEventListener('click', () => {
+    // Sacamos el último item y lo movemos al inicio
+    const last = items.pop();
+    items.unshift(last);
+    render();
+  });
+</script>
+    
+</body>
+</html>
