@@ -1,5 +1,46 @@
+<?php
+session_start();
+$mensajeError = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["correo"]) && isset($_GET["contrasena"])) {
+    $correo = urlencode($_GET['correo']);
+    $contrasena = urlencode($_GET['contrasena']);
+
+    $url = "http://localhost:3005/usuarios/validar/$correo/$contrasena";
+    $response = @file_get_contents($url);
+
+    if ($response === FALSE) {
+        // Si falla la conexión, redirige al index
+        echo "<p class='mensaje error'>Error al iniciar sesión.</p>";
+        header('Location: index.html');
+        exit();
+    } else {
+        $data = json_decode($response, true);
+
+        if (isset($data['usuario']['correo']) && isset($data['usuario']['tipo'])) {
+            $_SESSION['correo'] = $data['usuario']['correo'];
+            $_SESSION['tipo'] = $data['usuario']['tipo'];
+            $_SESSION['credito'] = $data['usuario']['creditoDisponible'];
+
+            if ($data['usuario']['tipo'] === 'administrador') {
+                header('Location: adminPanel.php');
+            } else {
+                header('Location: userHome.php');
+            }
+            exit();
+        } else {
+            // Si las credenciales son incorrectas, también redirige al index
+            header('Location: index.html');
+            echo "<p class='mensaje error'>El correo o la contraseña no son correctos</p>";
+            exit();
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
@@ -12,6 +53,8 @@
             --button-bg: #4CAF50;
             --button-hover-bg: #45a049;
             --link-color: #80bfff;
+            --error-bg: #ffcccc;
+            --error-text: #cc0000;
         }
 
         body.light-mode {
@@ -22,6 +65,8 @@
             --button-bg: #007BFF;
             --button-hover-bg: #0056b3;
             --link-color: #007BFF;
+            --error-bg: #ffe6e6;
+            --error-text: #cc0000;
         }
 
         body {
@@ -48,6 +93,15 @@
 
         h2 {
             margin-bottom: 20px;
+        }
+
+        .error-message {
+            background-color: var(--error-bg);
+            color: var(--error-text);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
         }
 
         form {
@@ -115,7 +169,12 @@
 <body>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
-        <form method="GET" action="login.php">
+
+        <?php if (!empty($mensajeError)): ?>
+            <div class="error-message"><?php echo $mensajeError; ?></div>
+        <?php endif; ?>
+
+        <form method="GET" action="index.php">
             <label for="correo">Correo:</label>
             <input type="email" name="correo" required>
 
