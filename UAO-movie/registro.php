@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -94,10 +94,10 @@
     <h1>Registro de Usuario</h1>
     <form method="POST" action="">
       <label for="correo">Correo electrónico:</label>
-      <input type="email" name="correo" required>
+      <input type="email" name="correo" required />
 
       <label for="contrasena">Contraseña:</label>
-      <input type="password" name="contrasena" required>
+      <input type="password" name="contrasena" required />
 
       <label for="rol">Rol:</label>
       <select name="rol" required>
@@ -106,31 +106,35 @@
       </select>
 
       <label for="creditos">Créditos iniciales:</label>
-      <input type="number" name="creditos" min="0" required>
+      <input type="number" name="creditos" min="0" required />
 
-      <input type="submit" value="Registrarse">
+      <input type="submit" value="Registrarse" />
     </form>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $correo = $_POST["correo"];
+  // Obtener datos del formulario
+  $correo = urlencode($_POST["correo"]);
   $contrasena = $_POST["contrasena"];
   $rol = $_POST["rol"];
   $creditos = intval($_POST["creditos"]);
 
+  // Verificar si el correo ya existe en la base de datos usando GET al microservicio
   $urlVerificar = "http://localhost:3005/usuarios/correo/$correo";
   $response = @file_get_contents($urlVerificar);
 
   if ($response !== false && !empty($response)) {
     $data = json_decode($response, true);
     if (!empty($data)) {
+      // Si ya existe usuario con ese correo, mostrar mensaje y detener ejecución
       echo "<p class='mensaje error'>El correo ya está registrado.</p>";
       exit();
     }
   }
 
+  // Si no existe, preparar datos para enviar POST a microservicio y crear usuario
   $data = array(
-    'correo' => $correo,
+    'correo' => urldecode($correo),
     'contrasenia' => $contrasena,
     'tipo' => $rol,
     'creditoDisponible' => $creditos
@@ -138,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $options = array(
     "http" => array(
-      "header"  => "Content-type: application/json",
+      "header"  => "Content-Type: application/json\r\n",
       "method"  => "POST",
       "content" => json_encode($data),
       "ignore_errors" => true
@@ -149,19 +153,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $urlRegistrar = "http://localhost:3005/usuarios";
   $result = file_get_contents($urlRegistrar, false, $context);
 
+  // Mostrar mensajes según el resultado del POST
   if ($result === FALSE) {
     echo "<p class='mensaje error'>Error al registrar el usuario.</p>";
   } else {
     echo "<p class='mensaje exito'>Usuario registrado exitosamente. Redirigiendo al inicio...</p>";
     echo "<script>
       setTimeout(function() {
-        window.location.href = 'index.html';
-      }, 2000); // espera 2 segundos antes de redirigir
+        window.location.href = 'login.html';
+      }, 2000);
     </script>";
   }
 }
 ?>
-
   </div>
 </body>
 </html>

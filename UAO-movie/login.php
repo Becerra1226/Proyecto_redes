@@ -2,18 +2,15 @@
 session_start();
 $mensajeError = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["correo"]) && isset($_GET["contrasena"])) {
-    $correo = urlencode($_GET['correo']);
-    $contrasena = urlencode($_GET['contrasena']);
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["correo"]) && isset($_POST["contrasena"])) {
+    $correo = urlencode($_POST['correo']);
+    $contrasena = urlencode($_POST['contrasena']);
 
     $url = "http://localhost:3005/usuarios/validar/$correo/$contrasena";
     $response = @file_get_contents($url);
 
-    if ($response === FALSE) {
-        // Si falla la conexión, redirige al index
-        echo "<p class='mensaje error'>Error al iniciar sesión.</p>";
-        header('Location: index.html');
-        exit();
+   if ($response === FALSE) {
+        $mensajeError = "Error al iniciar sesión.";
     } else {
         $data = json_decode($response, true);
 
@@ -23,16 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["correo"]) && isset($_GET
             $_SESSION['credito'] = $data['usuario']['creditoDisponible'];
 
             if ($data['usuario']['tipo'] === 'administrador') {
-                header('Location: adminPanel.php');
+                header('Location: Admin/home.html');
+                exit();
             } else {
-                header('Location: userHome.php');
+                header('Location: Home/home.html');
+                exit();
             }
-            exit();
         } else {
-            // Si las credenciales son incorrectas, también redirige al index
-            header('Location: index.html');
-            echo "<p class='mensaje error'>El correo o la contraseña no son correctos</p>";
-            exit();
+            $mensajeError = "El correo o la contraseña no son correctos";
         }
     }
 }
@@ -40,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["correo"]) && isset($_GET
 
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
@@ -174,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["correo"]) && isset($_GET
             <div class="error-message"><?php echo $mensajeError; ?></div>
         <?php endif; ?>
 
-        <form method="GET" action="index.php">
+        <form method="POST" action="login.php">
             <label for="correo">Correo:</label>
             <input type="email" name="correo" required>
 
@@ -186,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["correo"]) && isset($_GET
 
         <a class="registro-link" href="registro.php">¿No tienes cuenta? Crear usuario</a>
         <br>
-        <button class="toggle-mode" onclick="toggleTheme()">Cambiar modo</button>
+        <button clas0s="toggle-mode" onclick="toggleTheme()">Cambiar modo</button>
     </div>
 
     <script>
@@ -195,4 +190,4 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["correo"]) && isset($_GET
         }
     </script>
 </body>
-</html>
+</html
