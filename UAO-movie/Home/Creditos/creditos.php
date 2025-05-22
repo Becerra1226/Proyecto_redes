@@ -60,12 +60,12 @@ session_start();
                     <div class="profile-box">
                         <img class="profile-pic" src="../../Imagenes/Perfil/Perfil_1.svg" alt="Perfil">
                         <div class="profile-info">
-                            <span class="profile-name">Noah</span>
+                            <span class="profile-name"><?php echo htmlspecialchars($_SESSION['correo'] ?? 'Usuario'); ?></span>
                             <p class="profile-status">Tus créditos son</p>
                             <button id="btnCerrarSesion" style="margin-top:10px;">Cerrar sesión</button>
                             <button id="btnEliminarCuenta" style="margin-left:10px; margin-top:10px;">Eliminar cuenta</button>
                         </div>
-                        <span class="profile-balance">15</span>
+                        <span class="profile-balance"><?php echo intval($_SESSION['credito'] ?? 0); ?></span>
                         <img class="credit-icon" src="../../Imagenes/Tickets/Dorada.svg" alt="discounts">
                     </div>
                 </div>
