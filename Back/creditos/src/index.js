@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 app.use(creditosController);
 
-const PORT = 3001;
+const PORT = 3003;
 app.listen(PORT, () => {
   console.log(`Microservicio de créditos en el puerto ${PORT}`);
 });
