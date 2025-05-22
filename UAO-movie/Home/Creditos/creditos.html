@@ -59,6 +59,8 @@
                         <div class="profile-info">
                             <span class="profile-name">Noah</span>
                             <p class="profile-status">Tus créditos son</p>
+                            <button id="btnCerrarSesion" style="margin-top:10px;">Cerrar sesión</button>
+                            <button id="btnEliminarCuenta" style="margin-left:10px; margin-top:10px;">Eliminar cuenta</button>
                         </div>
                         <span class="profile-balance">15</span>
                         <img class="credit-icon" src="../../Imagenes/Tickets/Dorada.svg" alt="discounts">
@@ -106,39 +108,72 @@
 
     <!-- Script para conectar con el microservicio -->
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const botones = document.querySelectorAll(".btn-recargar");
-        const creditosSpan = document.querySelector(".profile-balance");
-        const idUsuario = 1; // Asegúrate que este ID exista en la base de datos
+document.addEventListener("DOMContentLoaded", function () {
+    const botones = document.querySelectorAll(".btn-recargar");
+    const creditosSpan = document.querySelector(".profile-balance");
+    const idUsuario = 1; // Cambia esto para obtener el id real del usuario logueado
 
-        botones.forEach(boton => {
-            boton.addEventListener("click", async function () {
-                const cantidad = parseInt(boton.getAttribute("data-cantidad"));
+    // Botones para recargar créditos
+    botones.forEach(boton => {
+        boton.addEventListener("click", async function () {
+            const cantidad = parseInt(boton.getAttribute("data-cantidad"));
 
-                try {
-                    const response = await fetch(`http://localhost:3001/creditos/agregar/${idUsuario}`, {
-                        method: "PATCH",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({ cantidad: cantidad })
-                    });
+            try {
+                const response = await fetch(`http://localhost:3005/usuarios/${idUsuario}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ creditoDisponible: parseInt(creditosSpan.textContent) + cantidad })
+                });
 
-                    if (response.ok) {
-                        const creditosActuales = parseInt(creditosSpan.textContent);
-                        const nuevosCreditos = creditosActuales + cantidad;
-                        creditosSpan.textContent = nuevosCreditos;
-                        alert(`¡Recargaste ${cantidad} créditos exitosamente!`);
-                    } else {
-                        alert("Error al recargar créditos");
-                    }
-                } catch (error) {
-                    console.error("Error:", error);
-                    alert("No se pudo conectar con el servidor.");
+                if (response.ok) {
+                    const nuevosCreditos = parseInt(creditosSpan.textContent) + cantidad;
+                    creditosSpan.textContent = nuevosCreditos;
+                    alert(`¡Recargaste ${cantidad} créditos exitosamente!`);
+                } else {
+                    alert("Error al recargar créditos");
                 }
-            });
+            } catch (error) {
+                console.error("Error:", error);
+                alert("No se pudo conectar con el servidor.");
+            }
         });
     });
+
+    // Botón cerrar sesión
+    const btnCerrarSesion = document.getElementById("btnCerrarSesion");
+    btnCerrarSesion.addEventListener("click", () => {
+        // Aquí podrías borrar localStorage o cookies si guardas sesión
+        // localStorage.removeItem('idUsuario');
+        window.location.href = "http://localhost/Proyecto_redes/UAO-movie/";
+    });
+
+    // Botón eliminar cuenta
+    const btnEliminarCuenta = document.getElementById("btnEliminarCuenta");
+    btnEliminarCuenta.addEventListener("click", async () => {
+        if (!confirm("¿Estás seguro que quieres eliminar tu cuenta? Esta acción es irreversible.")) return;
+
+        try {
+            const response = await fetch(`http://localhost:3005/usuarios/${idUsuario}`, {
+                method: "DELETE"
+            });
+
+            if (response.ok) {
+                alert("Cuenta eliminada correctamente.");
+                // Limpiar sesión, localStorage, etc.
+                // localStorage.removeItem('idUsuario');
+                window.location.href = "http://localhost/Proyecto_redes/UAO-movie/";
+            } else {
+                alert("Error al eliminar la cuenta");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("No se pudo conectar con el servidor.");
+        }
+    });
+});
+
     </script>
 </body>
 </html>
