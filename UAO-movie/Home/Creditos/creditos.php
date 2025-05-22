@@ -121,33 +121,7 @@ if (!idUsuario) {
   window.location.href = '/login.html';
 }
 
-    // Botones para recargar créditos
-    botones.forEach(boton => {
-        boton.addEventListener("click", async function () {
-            const cantidad = parseInt(boton.getAttribute("data-cantidad"));
 
-            try {
-                const response = await fetch(`http://localhost:3005/usuarios/${idUsuario}`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ creditoDisponible: parseInt(creditosSpan.textContent) + cantidad })
-                });
-
-                if (response.ok) {
-                    const nuevosCreditos = parseInt(creditosSpan.textContent) + cantidad;
-                    creditosSpan.textContent = nuevosCreditos;
-                    alert(`¡Recargaste ${cantidad} créditos exitosamente!`);
-                } else {
-                    alert("Error al recargar créditos");
-                }
-            } catch (error) {
-                console.error("Error:", error);
-                alert("No se pudo conectar con el servidor.");
-            }
-        });
-    });
 
     // Botón cerrar sesión
     const btnCerrarSesion = document.getElementById("btnCerrarSesion");
@@ -166,6 +140,14 @@ document.getElementById('btnEliminarCuenta').addEventListener('click', async () 
     alert('No has iniciado sesión.');
     return;
   }
+
+  // Evento para cada botón comprar crédito
+    botones.forEach(boton => {
+        boton.addEventListener("click", () => {
+            const cantidad = parseInt(boton.getAttribute("data-cantidad"));
+            recargarCreditos(cantidad);
+        });
+    });
 
   try {
     const response = await fetch(`http://localhost:3005/usuarios/${idUsuario}`, {
