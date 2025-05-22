@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -111,7 +114,12 @@
 document.addEventListener("DOMContentLoaded", function () {
     const botones = document.querySelectorAll(".btn-recargar");
     const creditosSpan = document.querySelector(".profile-balance");
-    const idUsuario = 1; // Cambia esto para obtener el id real del usuario logueado
+    const idUsuario = localStorage.getItem('idUsuario');
+if (!idUsuario) {
+  alert("No has iniciado sesión.");
+  // Opcional: redirigir a login
+  window.location.href = '/login.html';
+}
 
     // Botones para recargar créditos
     botones.forEach(boton => {
@@ -151,29 +159,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Botón eliminar cuenta
     const btnEliminarCuenta = document.getElementById("btnEliminarCuenta");
-    btnEliminarCuenta.addEventListener("click", async () => {
-        if (!confirm("¿Estás seguro que quieres eliminar tu cuenta? Esta acción es irreversible.")) return;
+document.getElementById('btnEliminarCuenta').addEventListener('click', async () => {
+  // Aquí va el fetch que elimina la cuenta
+  const idUsuario = localStorage.getItem('idUsuario');
+  if (!idUsuario) {
+    alert('No has iniciado sesión.');
+    return;
+  }
 
-        try {
-            const response = await fetch(`http://localhost:3005/usuarios/${idUsuario}`, {
-                method: "DELETE"
-            });
-
-            if (response.ok) {
-                alert("Cuenta eliminada correctamente.");
-                // Limpiar sesión, localStorage, etc.
-                // localStorage.removeItem('idUsuario');
-                window.location.href = "http://localhost/Proyecto_redes/UAO-movie/";
-            } else {
-                alert("Error al eliminar la cuenta");
-            }
-        } catch (error) {
-            console.error("Error:", error);
-            alert("No se pudo conectar con el servidor.");
-        }
+  try {
+    const response = await fetch(`http://localhost:3005/usuarios/${idUsuario}`, {
+      method: 'DELETE'
     });
-});
 
+    if (response.ok) {
+      alert('Cuenta eliminada correctamente.');
+      localStorage.removeItem('idUsuario'); // limpiar sesión
+      window.location.href = 'http://localhost/Proyecto_redes/UAO-movie/'; // o donde redirijas
+    } else {
+      alert('Error al eliminar la cuenta');
+    }
+  } catch (error) {
+    console.error(error);
+    alert('Error al conectar con el servidor');
+  }
+});
+});
+        <?php if (isset($_SESSION['idUsuario'])): ?>
+            localStorage.setItem('idUsuario', '<?php echo $_SESSION['idUsuario']; ?>');
+        <?php endif; ?>
     </script>
 </body>
 </html>

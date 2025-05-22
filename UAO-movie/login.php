@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["correo"]) && isset($_P
 
         if (isset($data['usuario']['correo']) && isset($data['usuario']['tipo'])) {
             $_SESSION['correo'] = $data['usuario']['correo'];
+            $_SESSION['idUsuario'] = $data['usuario']['id'];
             $_SESSION['tipo'] = $data['usuario']['tipo'];
             $_SESSION['credito'] = $data['usuario']['creditoDisponible'];
 
@@ -185,6 +186,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["correo"]) && isset($_P
     </div>
 
     <script>
+
+        localStorage.setItem('idUsuario', usuario.id);
         function toggleTheme() {
             document.body.classList.toggle("light-mode");
         }
