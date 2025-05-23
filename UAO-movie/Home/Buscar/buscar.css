@@ -224,3 +224,17 @@ h2 {
   .category-btn.active {
     background-color: #555a71;
   }
+
+  .movies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.movie-card {
+  background: #1f1f1f;
+  padding: 1rem;
+  border-radius: 8px;
+  color: white;
+}
