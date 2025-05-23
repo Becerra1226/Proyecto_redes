@@ -219,127 +219,125 @@
     </div>
   </div>
 </section>
-
-<section id="iq-favorites">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 overflow-hidden">
-        <div class="iq-main-header d-flex align-items-center justify-content-between">
-          <h4 class="main-title">Recomendaciones para ti</h4>
-          <a href="#" id="viewAllMovie" class="iq-view-all">Ver todo</a>
+<section id="custom-favorites">
+  <div class="custom-container-fluid">
+    <div class="custom-row">
+      <div class="custom-col-sm-12 custom-overflow-hidden">
+        <div class="custom-main-header d-flex align-items-center justify-content-between">
+          <h4 class="custom-main-title">Mejor valorada</h4>
+          <a href="#" id="custom-viewAllMovie" class="custom-view-all">Ver todo</a>
         </div>
 
-        <div class="favorite-contens">
-          <div class="carousel-wrapper">
-            <ul class="favorites-slider list-inline p-0 mb-0">
-              <!-- slide item 1 -->
-              <li class="slide-item">
-                <div class="block-images position-relative">
-                  <div class="img-box">
-                    <img src="../Imagenes/Peliculas/Fantasia/Dragon Ball Super Broly (2020).jpg" class="img-fluid" alt="Dragon Ball Super Broly" />
-                  </div>
-                  <div class="block-description">
-                    <h6 class="iq-title"><a href="#">Dragon Ball Super Broly</a></h6>
-                    <div class="movie-time d-flex align-items-center my-2">
-                      <div class="badge badge-secondary p-1 mr-2">13+</div>
-                      <span class="text-white">1h 43min</span>
+        <div class="custom-favorite-contents">
+          <div class="custom-carousel-wrapper">
+            <ul class="custom-favorites-slider list-inline p-0 mb-0">
+
+              <!-- slide 1 -->
+              <li class="custom-slide-item">
+                <div class="custom-block-images position-relative">
+
+                  <!-- Bloque principal (oculto inicialmente) -->
+                  <div class="custom-main-block" style="display:none;">
+                    <div class="custom-img-box">
+                      <img src="../Imagenes/Peliculas/Fantasia/Dragon Ball Super Broly (2020).jpg" class="custom-img-fluid" alt="Dragon Ball Super Broly" />
                     </div>
-                    <div class="hover-buttons">
-                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    <div class="custom-block-description">
+                      <h6 class="custom-iq-title"><a href="#">Dragon Ball Super Broly</a></h6>
+                      <div class="custom-movie-time d-flex align-items-center my-2">
+                        <div class="custom-badge-secondary p-1 mr-2">13+</div>
+                        <span class="custom-text-white">1h 43min</span>
+                      </div>
+                      <div class="custom-hover-buttons">
+                        <span class="custom-btn custom-btn-hover custom-iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                      </div>
                     </div>
                   </div>
+
+                  <!-- Bloque bloqueado (visible inicialmente) -->
+                  <div class="custom-blocked-overlay">
+                    <div class="custom-lock-icon">🔒</div>
+                    <h5 class="custom-blocked-movie-title">Película bloqueada: Dragon Ball Super Broly</h5>
+                    <div class="custom-blocked-rating">Valorada: ★★★★★</div>
+                    <button class="custom-unlock-btn" onclick="customUnlockMovie(this)">Desbloquear Película</button>
+                  </div>
+
                 </div>
               </li>
 
-              <!-- slide item 2 -->
-              <li class="slide-item">
-                <div class="block-images position-relative">
-                  <div class="img-box">
-                    <img src="../Imagenes/Peliculas/Accion/John Wick (2014).jpg" class="img-fluid" alt="John Wick" />
-                  </div>
-                  <div class="block-description">
-                    <h6 class="iq-title"><a href="#">John Wick</a></h6>
-                    <div class="movie-time d-flex align-items-center my-2">
-                      <div class="badge badge-secondary p-1 mr-2">16+</div>
-                      <span class="text-white">2h 34min</span>
+              <!-- slide 2 -->
+              <li class="custom-slide-item">
+                <div class="custom-block-images position-relative">
+
+                  <div class="custom-main-block" style="display:none;">
+                    <div class="custom-img-box">
+                      <img src="../Imagenes/Peliculas/Accion/John Wick (2014).jpg" class="custom-img-fluid" alt="John Wick" />
                     </div>
-                    <div class="hover-buttons">
-                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    <div class="custom-block-description">
+                      <h6 class="custom-iq-title"><a href="#">John Wick</a></h6>
+                      <div class="custom-movie-time d-flex align-items-center my-2">
+                        <div class="custom-badge-secondary p-1 mr-2">16+</div>
+                        <span class="custom-text-white">2h 34min</span>
+                      </div>
+                      <div class="custom-hover-buttons">
+                        <span class="custom-btn custom-btn-hover custom-iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                      </div>
                     </div>
                   </div>
+
+                  <div class="custom-blocked-overlay">
+                    <div class="custom-lock-icon">🔒</div>
+                    <h5 class="custom-blocked-movie-title">Película bloqueada: John Wick</h5>
+                    <div class="custom-blocked-rating">Valorada: ★★★★☆</div>
+                    <button class="custom-unlock-btn" onclick="customUnlockMovie(this)">Desbloquear Película</button>
+                  </div>
+
                 </div>
               </li>
 
-              <!-- slide item 3 -->
-              <li class="slide-item">
-                <div class="block-images position-relative">
-                  <div class="img-box">
-                    <img src="../Imagenes/Peliculas/Comedia/Un príncipe en Nueva York 2 (2021).jpg" class="img-fluid" alt="Un príncipe en Nueva York 2" />
-                  </div>
-                  <div class="block-description">
-                    <h6 class="iq-title"><a href="#">Un príncipe en Nueva York 2</a></h6>
-                    <div class="movie-time d-flex align-items-center my-2">
-                      <div class="badge badge-secondary p-1 mr-2">13+</div>
-                      <span class="text-white">2h 57min</span>
-                    </div>
-                    <div class="hover-buttons">
-                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
+              <!-- slide 3 -->
+              <li class="custom-slide-item">
+                <div class="custom-block-images position-relative">
 
-              <!-- slide item 4 -->
-              <li class="slide-item">
-                <div class="block-images position-relative">
-                  <div class="img-box">
-                    <img src="../Imagenes/Peliculas/Anime/Dragon Ball Super Super Hero (2022).jpg" class="img-fluid" alt="Dragon Ball Super Hero" />
-                  </div>
-                  <div class="block-description">
-                    <h6 class="iq-title"><a href="#">Dragon Ball Super Hero</a></h6>
-                    <div class="movie-time d-flex align-items-center my-2">
-                      <div class="badge badge-secondary p-1 mr-2">10+</div>
-                      <span class="text-white">2h 23min</span>
+                  <div class="custom-main-block" style="display:none;">
+                    <div class="custom-img-box">
+                      <img src="../Imagenes/Peliculas/Comedia/Un príncipe en Nueva York 2 (2021).jpg" class="custom-img-fluid" alt="Un príncipe en Nueva York 2" />
                     </div>
-                    <div class="hover-buttons">
-                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                    <div class="custom-block-description">
+                      <h6 class="custom-iq-title"><a href="#">Un príncipe en Nueva York 2</a></h6>
+                      <div class="custom-movie-time d-flex align-items-center my-2">
+                        <div class="custom-badge-secondary p-1 mr-2">13+</div>
+                        <span class="custom-text-white">2h 57min</span>
+                      </div>
+                      <div class="custom-hover-buttons">
+                        <span class="custom-btn custom-btn-hover custom-iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </li>
 
-              <!-- slide item 5 -->
-              <li class="slide-item">
-                <div class="block-images position-relative">
-                  <div class="img-box">
-                    <img src="../Imagenes/Peliculas/Infantil/Robot salvaje (2024).jpg" class="img-fluid" alt="Robot Salvaje" />
+                  <div class="custom-blocked-overlay">
+                    <div class="custom-lock-icon">🔒</div>
+                    <h5 class="custom-blocked-movie-title">Película bloqueada: Un príncipe en Nueva York 2</h5>
+                    <div class="custom-blocked-rating">Valorada: ★★★★☆</div>
+                    <button class="custom-unlock-btn" onclick="customUnlockMovie(this)">Desbloquear Película</button>
                   </div>
-                  <div class="block-description">
-                    <h6 class="iq-title"><a href="#">Robot Salvaje</a></h6>
-                    <div class="movie-time d-flex align-items-center my-2">
-                      <div class="badge badge-secondary p-1 mr-2">7+</div>
-                      <span class="text-white">1h 55min</span>
-                    </div>
-                    <div class="hover-buttons">
-                      <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1"></i> Ver ahora</span>
-                    </div>
-                  </div>
+
                 </div>
               </li>
             </ul>
-
-            <!-- Botones del carrusel -->
-            <div class="carousel-buttons">
-              <button class="carousel-btn prev-btn">&#10094;</button>
-              <button class="carousel-btn next-btn">&#10095;</button>
-            </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+  <div class="custom-container-fluid">
+    <div class="custom-row">
+      <div class="custom-col-sm-12 custom-overflow-hidden">
+        <div class="custom-main-header d-flex align-items-center justify-content-between">
+          <h4 class="custom-main-title"></h4>
+          <a href="#" id="custom-viewAllMovie" class="custom-view-all"></a>
+        </div>
 
 
 <script src="../scripts/home/carrusel.js"></script>

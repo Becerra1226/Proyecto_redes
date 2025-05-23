@@ -686,3 +686,276 @@ li.slide-item:hover .block-images::after {
 .carousel-btn:hover {
   background-color: #e50914;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contenedor general */
+.custom-container-fluid {
+  padding: 0 40px;
+}
+
+.custom-main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.custom-main-title {
+  font-size: 2.4em; /* aumentado */
+  font-weight: bold;
+}
+
+.custom-view-all {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em; /* aumentado */
+}
+
+.custom-favorites-slider {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: hidden; /* evita scroll */
+  gap: 24px; /* aumentado */
+  scroll-behavior: smooth;
+  overflow-y: hidden !important;
+}
+
+.custom-slide-item {
+  flex: 0 0 30%; /* aumentado para slides más anchos */
+  min-width: 280px; /* aumentado */
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+/* Imagen contenedora */
+.custom-block-images {
+  position: relative;
+  width: 100%;
+  height: 220px; /* aumentado */
+  overflow: hidden;
+  border-radius: 10px; /* aumentado */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Gradiente oscuro encima de la imagen */
+.custom-block-images::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85));
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 10px; /* igual que bloque */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Línea roja al lado izquierdo en hover */
+.custom-block-images::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #e50914;
+  z-index: 2;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: top;
+  border-radius: 2px;
+}
+
+/* Imagen */
+.custom-block-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px; /* igual que bloque */
+  position: relative;
+  z-index: 0;
+}
+
+/* Hover efecto */
+li.custom-slide-item:hover .custom-block-images {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0,0,0,0.7);
+  z-index: 10;
+}
+
+li.custom-slide-item:hover .custom-block-images::before {
+  opacity: 1;
+}
+
+li.custom-slide-item:hover .custom-block-images::after {
+  transform: scaleY(1);
+}
+
+/* Descripción */
+.custom-block-description {
+  position: absolute;
+  top: 15px; /* aumentado */
+  left: 15px; /* aumentado */
+  color: #fff;
+  z-index: 2;
+}
+
+.custom-block-description .custom-iq-title a {
+  font-weight: bold;
+  font-size: 1.2em; /* aumentado */
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Tiempo + edad */
+.custom-movie-time {
+  margin-top: 6px; /* aumentado */
+  display: flex;
+  align-items: center;
+  font-size: 1em; /* aumentado */
+  color: #fff;
+  gap: 10px; /* aumentado */
+}
+
+.custom-badge-secondary {
+  background-color: #6c757d;
+  border-radius: 6px; /* aumentado */
+  padding: 3px 8px; /* aumentado */
+  font-size: 0.9em; /* aumentado */
+}
+
+/* Botón "Ver ahora" */
+.custom-hover-buttons {
+  margin-top: 10px; /* aumentado */
+}
+
+.custom-btn-hover {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 16px; /* aumentado */
+  border-radius: 6px; /* aumentado */
+  font-size: 1em; /* aumentado */
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.custom-btn-hover:hover {
+  background: #bf000a;
+}
+
+/* Bloque película bloqueada */
+.custom-blocked-overlay {
+  background-image: url('../Imagenes/fondo-bloqueado.jpg'); /* Cambia ruta a la imagen que uses */
+  background-size: cover;
+  background-position: center;
+  padding: 25px; /* aumentado */
+  border-radius: 12px; /* aumentado */
+  color: #fff;
+  text-align: center;
+  margin-top: 20px; /* aumentado */
+  box-shadow: 0 0 20px rgba(0,0,0,0.8); /* aumentado */
+}
+
+/* Icono candado reducido */
+.custom-lock-icon {
+  font-size: 35px; /* reducido */
+  color: #f44336;
+  margin-bottom: 10px; /* ajustado */
+}
+
+/* Título bloqueado más pequeño */
+.custom-blocked-movie-title {
+  font-size: 16px; /* reducido */
+  margin-bottom: 8px; /* ajustado */
+}
+
+/* Valoración bloqueado más pequeña */
+.custom-blocked-rating {
+  font-size: 16px; /* reducido */
+  color: #ffd700;
+  margin-bottom: 10px; /* ajustado */
+}
+
+/* Botón desbloquear */
+.custom-unlock-btn {
+  margin-top: 15px; /* aumentado */
+  padding: 14px 28px; /* aumentado */
+  font-size: 18px; /* aumentado */
+  background-color: #2196f3;
+  border: none;
+  border-radius: 8px; /* aumentado */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-unlock-btn:hover {
+  background-color: #1976d2;
+}
+
+.custom-blocked-content {
+  margin-top: 20px; /* aumentado */
+  display: none;
+}
+
+.custom-trailer-link {
+  color: #4caf50;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1.1em; /* aumentado */
+}
+
+.custom-carousel-buttons {
+  position: relative;
+  top: -100px;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.custom-carousel-btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50%;
+  pointer-events: all;
+  transition: background 0.3s ease;
+}
+
+.custom-carousel-btn:hover {
+  background-color: #e50914;
+}
+
+
+
