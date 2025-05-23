@@ -150,7 +150,7 @@ document.getElementById('btnEliminarCuenta').addEventListener('click', async () 
     });
 
   try {
-    const response = await fetch(`http://localhost:3003/usuarios/${idUsuario}`, {
+    const response = await fetch(`http://localhost:3005/usuarios/${idUsuario}`, {
       method: 'DELETE'
     });
 
@@ -176,12 +176,17 @@ document.getElementById('btnEliminarCuenta').addEventListener('click', async () 
   document.addEventListener("DOMContentLoaded", async () => {
     const creditosSpan = document.querySelector(".profile-balance");
     const botones = document.querySelectorAll(".btn-recargar");
-    const usuarioId = 1; // Cambia según usuario real o sesión
+    const usuarioId = localStorage.getItem('idUsuario');
 
+    if (!idUsuario) {
+  alert("No has iniciado sesión.");
+  // Opcional: redirigir a login
+  window.location.href = '/login.html';
+}
     // Función para obtener créditos actuales del usuario
     async function obtenerCreditos() {
       try {
-        const response = await fetch(`http://localhost:3003/usuarios/${usuarioId}`);
+        const response = await fetch(`http://localhost:3005/usuarios/${usuarioId}`);
         if (!response.ok) throw new Error("No se pudo obtener el usuario");
         const usuario = await response.json();
         creditosSpan.textContent = usuario.creditos ?? usuario.creditoDisponible ?? 0;
@@ -200,7 +205,7 @@ document.getElementById('btnEliminarCuenta').addEventListener('click', async () 
         const cantidad = parseInt(boton.getAttribute("data-cantidad"));
 
         try {
-          const response = await fetch(`http://localhost:3003/creditos/agregar/${usuarioId}`, {
+          const response = await fetch(`http://localhost:3005/creditos/agregar/${usuarioId}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json"

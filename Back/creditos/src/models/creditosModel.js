@@ -4,7 +4,7 @@ const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'cine'
+  database: 'creditos'
 });
 
 async function agregarCreditos(usuario_id, cantidad) {
