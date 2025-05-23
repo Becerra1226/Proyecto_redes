@@ -150,7 +150,7 @@ document.getElementById('btnEliminarCuenta').addEventListener('click', async () 
     });
 
   try {
-    const response = await fetch(`http://localhost:3005/usuarios/${idUsuario}`, {
+    const response = await fetch(`http://localhost:3003/usuarios/${idUsuario}`, {
       method: 'DELETE'
     });
 
@@ -171,5 +171,58 @@ document.getElementById('btnEliminarCuenta').addEventListener('click', async () 
             localStorage.setItem('idUsuario', '<?php echo $_SESSION['idUsuario']; ?>');
         <?php endif; ?>
     </script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const creditosSpan = document.querySelector(".profile-balance");
+    const botones = document.querySelectorAll(".btn-recargar");
+    const usuarioId = 1; // Cambia según usuario real o sesión
+
+    // Función para obtener créditos actuales del usuario
+    async function obtenerCreditos() {
+      try {
+        const response = await fetch(`http://localhost:3003/usuarios/${usuarioId}`);
+        if (!response.ok) throw new Error("No se pudo obtener el usuario");
+        const usuario = await response.json();
+        creditosSpan.textContent = usuario.creditos ?? usuario.creditoDisponible ?? 0;
+      } catch (error) {
+        console.error("Error al obtener créditos:", error);
+        creditosSpan.textContent = "Error";
+      }
+    }
+
+    // Carga inicial de créditos al abrir la página
+    await obtenerCreditos();
+
+    // Evento para recargar créditos
+    botones.forEach(boton => {
+      boton.addEventListener("click", async () => {
+        const cantidad = parseInt(boton.getAttribute("data-cantidad"));
+
+        try {
+          const response = await fetch(`http://localhost:3003/creditos/agregar/${usuarioId}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ cantidad })
+          });
+
+          if (response.ok) {
+            // Actualiza créditos desde el servidor para evitar desincronización
+            await obtenerCreditos();
+            alert(`¡Recargaste ${cantidad} créditos exitosamente!`);
+          } else {
+            alert("Error al recargar créditos");
+          }
+        } catch (error) {
+          console.error("Error en la recarga:", error);
+          alert("No se pudo conectar con el servidor.");
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>

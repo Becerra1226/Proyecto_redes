@@ -381,6 +381,103 @@
     render();
   });
 </script>
+
+<script>
+const profileContainer = document.getElementById('profileContainer');
+const profileDropdown = document.getElementById('profileDropdown');
+
+profileContainer.addEventListener('click', () => {
+  profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+});
+
+// Para cerrar al hacer click afuera
+window.addEventListener('click', (e) => {
+  if (!profileContainer.contains(e.target)) {
+    profileDropdown.style.display = 'none';
+  }
+});
+
+</script>
+
+<script>
+  const usuarioId = 1; // Cambia por el id real o la sesión
+
+  async function descontarCreditos(usuarioId, cantidad) {
+    try {
+      const response = await fetch(`http://localhost:3003/creditos/descontar/${usuarioId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ cantidad })
+      });
+
+      if (response.ok) {
+        return true;
+      } else if (response.status === 400) {
+        const text = await response.text();
+        alert("No tienes créditos suficientes para desbloquear la película.");
+        return false;
+      } else {
+        alert("Error al descontar créditos.");
+        return false;
+      }
+    } catch (error) {
+      console.error("Error en la petición de descontar créditos:", error);
+      alert("Error de conexión con el servidor.");
+      return false;
+    }
+  }
+
+  async function obtenerCreditosActuales() {
+    try {
+      const response = await fetch(`http://localhost:3003/usuarios/${usuarioId}`);
+      if (!response.ok) throw new Error("No se pudo obtener el usuario");
+      const usuario = await response.json();
+      return usuario.creditoDisponible ?? 0;
+    } catch (error) {
+      console.error("Error al obtener créditos:", error);
+      return 0;
+    }
+  }
+
+  function actualizarVisualizacionCreditos(nuevosCreditos) {
+    const creditosSpan = document.querySelector(".profile-balance");
+    creditosSpan.textContent = nuevosCreditos;
+  }
+
+  // Función para manejar el desbloqueo de la película
+  async function customUnlockMovie(button) {
+    const costoDesbloqueo = 5; // Define cuántos créditos cuesta desbloquear una película
+    const creditosActuales = await obtenerCreditosActuales();
+
+    if (creditosActuales < costoDesbloqueo) {
+      alert("No tienes créditos suficientes para desbloquear esta película.");
+      return;
+    }
+
+    const exito = await descontarCreditos(usuarioId, costoDesbloqueo);
+    if (!exito) return;
+
+    // Actualizar la UI: ocultar overlay bloqueado y mostrar contenido principal
+    const blockedOverlay = button.closest('.custom-blocked-overlay');
+    const mainBlock = blockedOverlay.parentElement.querySelector('.custom-main-block');
+    blockedOverlay.style.display = 'none';
+    mainBlock.style.display = 'block';
+
+    // Actualizar créditos visualmente
+    actualizarVisualizacionCreditos(creditosActuales - costoDesbloqueo);
+    alert(`Película desbloqueada! Se descontaron ${costoDesbloqueo} créditos.`);
+  }
+
+  // Asignar evento a todos los botones de desbloqueo actuales y futuros
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".custom-unlock-btn").forEach(button => {
+      button.onclick = () => customUnlockMovie(button);
+    });
+  });
+</script>
+
     
 </body>
 </html>
