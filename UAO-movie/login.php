@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["correo"]) && isset($_P
     $correo = urlencode($_POST['correo']);
     $contrasena = urlencode($_POST['contrasena']);
 
-    $url = "http://localhost:3005/usuarios/validar/$correo/$contrasena";
+    $url = "http://192.168.100.20:3005/usuarios/validar/$correo/$contrasena";
     $response = @file_get_contents($url);
 
    if ($response === FALSE) {

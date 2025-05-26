@@ -128,7 +128,7 @@ if (!idUsuario) {
     btnCerrarSesion.addEventListener("click", () => {
         // Aquí podrías borrar localStorage o cookies si guardas sesión
         // localStorage.removeItem('idUsuario');
-        window.location.href = "http://localhost/Proyecto_redes/UAO-movie/";
+        window.location.href = "http://192.168.100.20/Proyecto_redes/UAO-movie/";
     });
 
     // Botón eliminar cuenta
@@ -150,14 +150,14 @@ document.getElementById('btnEliminarCuenta').addEventListener('click', async () 
     });
 
   try {
-    const response = await fetch(`http://localhost:3005/usuarios/${idUsuario}`, {
+    const response = await fetch(`http://192.168.100.20:3005/usuarios/${idUsuario}`, {
       method: 'DELETE'
     });
 
     if (response.ok) {
       alert('Cuenta eliminada correctamente.');
       localStorage.removeItem('idUsuario'); // limpiar sesión
-      window.location.href = 'http://localhost/Proyecto_redes/UAO-movie/'; // o donde redirijas
+      window.location.href = 'http://192.168.100.20/Proyecto_redes/UAO-movie/'; // o donde redirijas
     } else {
       alert('Error al eliminar la cuenta');
     }
@@ -186,7 +186,7 @@ document.getElementById('btnEliminarCuenta').addEventListener('click', async () 
     // Función para obtener créditos actuales del usuario
     async function obtenerCreditos() {
       try {
-        const response = await fetch(`http://localhost:3005/usuarios/${usuarioId}`);
+        const response = await fetch(`http://192.168.100.20:3005/usuarios/${usuarioId}`);
         if (!response.ok) throw new Error("No se pudo obtener el usuario");
         const usuario = await response.json();
         creditosSpan.textContent = usuario.creditos ?? usuario.creditoDisponible ?? 0;
@@ -205,7 +205,7 @@ document.getElementById('btnEliminarCuenta').addEventListener('click', async () 
         const cantidad = parseInt(boton.getAttribute("data-cantidad"));
 
         try {
-          const response = await fetch(`http://localhost:3005/creditos/agregar/${usuarioId}`, {
+          const response = await fetch(`http://192.168.100.20:3005/creditos/agregar/${usuarioId}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json"

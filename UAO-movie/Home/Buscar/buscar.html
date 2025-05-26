@@ -103,21 +103,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function fetchPeliculas() {
-  fetch("http://localhost:3002/peliculas")
+  fetch("http://192.168.100.20:3002/peliculas")
     .then(res => res.json())
     .then(data => mostrarPeliculas(data))
     .catch(err => console.error("Error al obtener películas:", err));
 }
 
 function fetchPeliculasOrdenadas() {
-  fetch("http://localhost:3002/peliculas-ordenadas")
+  fetch("http://192.168.100.20:3002/peliculas-ordenadas")
     .then(res => res.json())
     .then(data => mostrarPeliculas(data))
     .catch(err => console.error("Error al obtener películas ordenadas:", err));
 }
 
 function fetchPeliculasPorGenero(genero) {
-  fetch(`http://localhost:3002/peliculas/genero/${genero}`)
+  fetch(`http://192.168.100.20:3002/peliculas/genero/${genero}`)
     .then(res => {
       if (!res.ok) throw new Error("No se encontraron películas de este género");
       return res.json();

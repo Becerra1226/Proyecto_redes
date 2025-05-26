@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $creditos = intval($_POST["creditos"]);
 
   // Verificar si el correo ya existe en la base de datos usando GET al microservicio
-  $urlVerificar = "http://localhost:3005/usuarios/correo/$correo";
+  $urlVerificar = "http://192.168.100.20:3005/usuarios/correo/$correo";
   $response = @file_get_contents($urlVerificar);
 
   if ($response !== false && !empty($response)) {
@@ -150,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   );
 
   $context = stream_context_create($options);
-  $urlRegistrar = "http://localhost:3005/usuarios";
+  $urlRegistrar = "http://192.168.100.20:3005/usuarios";
   $result = file_get_contents($urlRegistrar, false, $context);
 
   // Mostrar mensajes según el resultado del POST

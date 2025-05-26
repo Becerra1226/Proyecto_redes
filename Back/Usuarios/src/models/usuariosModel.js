@@ -1,10 +1,10 @@
-const mysql = require('mysql2/promise');
+const mysql = require("mysql2/promise");
 
 const conexion = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: '', // tu contraseña
-  database: 'usuarios' // nombre de tu base de datos
+  host: "localhost",
+  user: "root",
+  password: "", // tu contraseña
+  database: "usuarios", // nombre de tu base de datos
 });
 
 // Obtener todos los usuarios
@@ -15,19 +15,24 @@ const traerUsuarios = async () => {
 
 // Obtener un usuario por ID
 const traerUsuario = async (id) => {
-  const [rows] = await conexion.query("SELECT * FROM usuarios WHERE id = ?", [id]);
+  const [rows] = await conexion.query("SELECT * FROM usuarios WHERE id = ?", [
+    id,
+  ]);
   return rows;
 };
 
 // Obtener un usuario por correo
 const traerPorCorreo = async (correo) => {
-  const [rows] = await conexion.query('SELECT * FROM usuarios WHERE correo = ?', [correo]);
+  const [rows] = await conexion.query(
+    "SELECT * FROM usuarios WHERE correo = ?",
+    [correo]
+  );
   return rows;
 };
 
 // Crear un nuevo usuario
 const crearUsuario = async (correo, contrasenia, tipo, creditoDisponible) => {
-  const result = await conexion.query(
+  const [result] = await conexion.query(
     "INSERT INTO usuarios (correo, contrasenia, tipo, creditoDisponible) VALUES (?, ?, ?, ?)",
     [correo, contrasenia, tipo, creditoDisponible]
   );
@@ -36,7 +41,7 @@ const crearUsuario = async (correo, contrasenia, tipo, creditoDisponible) => {
 
 // Actualizar crédito disponible
 const actualizarUsuario = async (id, creditoDisponible) => {
-  const result = await conexion.query(
+  const [result] = await conexion.query(
     "UPDATE usuarios SET creditoDisponible = ? WHERE id = ?",
     [creditoDisponible, id]
   );
@@ -54,7 +59,9 @@ const validarUsuario = async (correo, contrasenia) => {
 
 // Borrar usuario
 const borrarUsuario = async (id) => {
-  const result = await conexion.query("DELETE FROM usuarios WHERE id = ?", [id]);
+  const [result] = await conexion.query("DELETE FROM usuarios WHERE id = ?", [
+    id,
+  ]);
   return result;
 };
 
@@ -65,5 +72,5 @@ module.exports = {
   crearUsuario,
   actualizarUsuario,
   validarUsuario,
-  borrarUsuario
+  borrarUsuario,
 };
